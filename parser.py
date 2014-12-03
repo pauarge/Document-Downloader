@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup as bs
 from urlparse import urljoin, urlsplit
 
 
+print "Please, write the URL where you want to download from"
 url = raw_input()
 if url[:7] != 'http://' and url[:8] != 'https://':
         url = 'http://'+url
