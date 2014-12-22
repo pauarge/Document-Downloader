@@ -9,8 +9,9 @@ url = raw_input()
 print "What kind of file you wanna download? (type extension without the '.')"
 filetype = raw_input()
 print "Where do you wanna store the files? (write a relative path from where you are running this script, default is out/)"
+print "Type 'd' for default"
 outpath = raw_input()
-if not outpath:
+if outpath == "d":
     outpath = "out/"
 
 if url[:7] != 'http://' and url[:8] != 'https://':
@@ -25,8 +26,8 @@ for link in soup.find_all('a'):
         filename = split.path.split("/")[-1]
         f = urlopen(down)
         data = f.read()
-        if not path.exists("out"):
-            makedirs("out")
-        with open(+filename, "wb") as code:
+        if not path.exists(outpath):
+            makedirs(outpath)
+        with open(outpath+filename, "wb") as code:
             code.write(data)
             print "Downloaded " + filename
