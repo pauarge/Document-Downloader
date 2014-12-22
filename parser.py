@@ -1,8 +1,10 @@
-from os import path, makedirs
+from os import path, makedirs, system
 from urllib2 import urlopen
 from bs4 import BeautifulSoup as bs
 from urlparse import urljoin, urlsplit
+import time
 
+system('clear')
 
 print "Please, write the URL where you want to download from"
 url = raw_input()
@@ -14,6 +16,8 @@ outpath = raw_input()
 if outpath == "d":
     outpath = "out/"
 
+count = 0
+start_time = time.time()
 if url[:7] != 'http://' and url[:8] != 'https://':
         url = 'http://'+url
 page = urlopen(url).read()
@@ -31,3 +35,9 @@ for link in soup.find_all('a'):
         with open(outpath+filename, "wb") as code:
             code.write(data)
             print "Downloaded " + filename
+            count += 1
+
+final_time = round(time.time()-start_time,2)
+
+print "\n"
+print "Downlaoded "+str(count)+" files in "+str(final_time)+" seconds." 
