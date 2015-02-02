@@ -24,7 +24,12 @@ If you don't use a package manager for Python (though it's not required), I high
 	* **Outpath** *(-o, --outpath)*: Where you wanna output the files. If not specified, it will output by default on `out/`.
 	* **URL** *(-u, --url)*: URL where you want to download the files from. If not specified, it will be propmted during the script execution.
 	* **Filetype** *(-f, --filetype)*: The type of file you want to download. If not specified, it will be propmted during the script execution.
+	
+**NOTE: Optional data on those parameters such as 'http://' for URLS, final slash for outpath or dot for filetype will be added automatically if not specified.**
 
 ###Examples:	
 
+`python document-downloader.py -o test -u http://www.cs.upc.edu/~pro1/index.php?id=material-docent -f pdf`
+
+`python document-downloader-py -u www.cs.upc.edu/~pro1/index.php?id=material-docent -f .txt`
  
