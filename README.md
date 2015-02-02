@@ -1,6 +1,6 @@
 #Document Downloader
 
-As a university student, I get most of the studying stuff through the Internet. Most professors give me a URL where I can download all the required files to work (mostly, PDF theory files). The problem is that usually in that pages there are lots of files, and manually download all of them
+As a university student, I get most of the studying stuff through the Internet. Most professors give me a URL where I can download all the required files to work (mostly, PDF theory files). The problem is that usually in that pages there are lots of files, and manually download all of them is a pain on the ass.
 
 I did this simple script to massively download files from a webpage which has all the links in it.  
 
@@ -12,12 +12,19 @@ This script runs on Python 2.7 (I'm working on a Python 3 version), so if you ha
 
 You need [Beautiful Soup 4](http://www.crummy.com/software/BeautifulSoup/) to run it. The other packages we are using are bundled by default with any Python instalation. 
 
-If you don't use a package manager for Python, I highly recommend [PIP](https://pip.pypa.io/en/latest/quickstart.html) (and [VirtualEnv](https://virtualenv.pypa.io/en/latest/)). Then, installing BS4 it's really easy:
+If you don't use a package manager for Python (though it's not required), I highly recommend [PIP](https://pip.pypa.io/en/latest/quickstart.html) (and [VirtualEnv](https://virtualenv.pypa.io/en/latest/)). Then, installing BS4 it's really easy:
 
 `pip install beautifulsoup4`
 
 ##How it works
 
-First, you must make sure you have installed and enabled (if you are using a Virtualenv) the packages listed on the requirements.
+* Make sure you have installed and enabled (if you are using a Virtualenv) the packages listed on the requirements. ([How to create and activate a Virtualenv?](http://docs.python-guide.org/en/latest/dev/virtualenvs/))
+* Open your terminal (or cmd on Windows) and navigate to the directory where you cloned the repository (typically using `cd`).
+* Run the script using `python document-downloader.py`. The following arguments apply:
+	* **Outpath** *(-o, --outpath)*: Where you wanna output the files. If not specified, it will output by default on `out/`.
+	* **URL** *(-u, --url)*: URL where you want to download the files from. If not specified, it will be propmted during the script execution.
+	* **Filetype** *(-f, --filetype)*: The type of file you want to download. If not specified, it will be propmted during the script execution.
+
+###Examples:	
 
  
