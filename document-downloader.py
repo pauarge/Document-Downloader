@@ -7,18 +7,25 @@ import sys
 import argparse
 
 
+def parse_outpath(outpath):
+    if outpath[-1:] != '/':
+        return outpath + '/'
+    else:
+        return outpath
+
+
 def parse_url(url):
     if url[:7] != 'http://' and url[:8] != 'https://':
-        return 'http://'+url
+        return 'http://' + url
     else:
         return url
 
 
 def parse_filetype(filetype):
     if filetype[:1] != '.':
-        return '.'+filetype
+        return '.'+filetype, len(filetype) + 1
     else:
-        return filetype
+        return filetype, len(filetype)
 
 
 def main(argv):
@@ -30,7 +37,7 @@ def main(argv):
     args = parser.parse_args()
 
     if args.outpath:
-        outpath = args.outpath
+        outpath = parse_outpath(args.outpath)
     else:
         outpath = 'out/'
 
@@ -41,10 +48,10 @@ def main(argv):
         url = parse_url(raw_input())
 
     if args.filetype:
-        filetype = parse_filetype(args.filetype)
+        filetype, filetype_len = parse_filetype(args.filetype)
     else:
         print ("What kind of file you wanna download?")
-        filetype = parse_filetype(raw_input())
+        filetype, filetype_len = parse_filetype(raw_input())
 
     count = 0
     start_time = time.time()
@@ -52,7 +59,7 @@ def main(argv):
     soup = bs(page)
 
     for link in soup.find_all('a'):
-        if link.get('href')[-4:] == filetype:
+        if link.get('href')[-filetype_len:] == filetype:
             down = urljoin(url, link.get('href'))
             split = urlsplit(down)
             filename = split.path.split("/")[-1]
@@ -62,12 +69,13 @@ def main(argv):
                 makedirs(outpath)
             with open(outpath+filename, "wb") as code:
                 code.write(data)
-                print ("Downloaded " + filename)
+                partial_time = str(round(time.time()-start_time, 2))
                 count += 1
+                print ("Downloaded " + filename + ' (' + partial_time + ' seconds elapsed)')
 
-    final_time = round(time.time()-start_time, 2)
+    final_time = str(round(time.time()-start_time, 2))
 
-    print ("\n Downlaoded "+str(count)+" files in "+str(final_time)+" seconds.")
+    print ("\n Downlaoded " + str(count) + " files in " + final_time + " seconds.")
 
 
 if __name__ == '__main__':
