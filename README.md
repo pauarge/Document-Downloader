@@ -8,7 +8,7 @@ I did this simple script to massively download files from a webpage which has al
 
 ##Requirements
 
-This script runs on Python 2.7 (I'm working on a Python 3 version), so if you have Python installed in your computer, it should work! I've tested heavily on a Mac and Linux (Ubuntu), but if you have a Windows machine, you shouldn't have any problem. If you don't have Python installed, please refer [here](https://www.python.org/downloads/).
+This script runs on Python 2.7 (I'm working on a Python 3 version), so if you have Python installed on your computer, it should work! I've tested heavily on a Mac and Linux (Ubuntu), but if you have a Windows machine, you shouldn't have any problem. If you don't have Python installed, please refer [here](https://www.python.org/downloads/).
 
 You need [Beautiful Soup 4](http://www.crummy.com/software/BeautifulSoup/) to run it. The other packages we are using are bundled by default with any Python instalation. 
 
@@ -17,3 +17,7 @@ If you don't use a package manager for Python, I highly recommend [PIP](https://
 `pip install beautifulsoup4`
 
 ##How it works
+
+First, you must make sure you have installed and enabled (if you are using a Virtualenv) the packages listed on the requirements.
+
+ 
